@@ -17,7 +17,7 @@ class game {
     void array_list() {
         Random random = new Random();
         try {
-            Scanner sc = new Scanner(new File("F:\\LNCTU Btech details\\2nd Year\\1st Semester\\IdeaProjects\\Summation\\src\\Projects\\Words.txt"));
+            Scanner sc = new Scanner(new File("C:\\Users\\Aashman\\Documents\\College Shitzzz\\Git\\Wordle-game\\Words.txt"));
             while (sc.hasNext()) {
                 String data = sc.next();
                 arr.add(data.toUpperCase());
@@ -34,7 +34,7 @@ class game {
     //Method 2 - To add 5 letter dictionary words in dict
     void validWords() {
         try {
-            Scanner sc = new Scanner(new File("F:\\LNCTU Btech details\\2nd Year\\1st Semester\\IdeaProjects\\Summation\\src\\Projects\\engDict.txt"));
+            Scanner sc = new Scanner(new File("C:\\Users\\Aashman\\Documents\\College Shitzzz\\Git\\Wordle-game\\engDict.txt"));
             while (sc.hasNext()) {
                 String word = sc.next();
                 if (word.length() == 5) {
@@ -50,15 +50,16 @@ class game {
     //Method 3 - Taking user input string (NO RETURN VALUE NEEDED)
     void takeUserInput() {
         boolean c = true;
-        Scanner sc = new Scanner(System.in);
-        System.out.print("\nGuess the word: ");
-        String a = sc.next();
-        a = a.toUpperCase();
-        for (String element : dict) {
-            if (Objects.equals(a, element)) {
-                c = false;
-                this.userInput = a;
-                break;
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("\nGuess the word: ");
+            String a = sc.next();
+            a = a.toUpperCase();
+            for (String element : dict) {
+                if (Objects.equals(a, element)) {
+                    c = false;
+                    this.userInput = a;
+                    break;
+                }
             }
         }
         if (c) {
